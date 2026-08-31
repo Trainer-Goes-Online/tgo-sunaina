@@ -145,7 +145,7 @@ export function SectionHeading({
         </div>
       )}
       <h2
-        className="font-display text-[clamp(28px,4.4vw,46px)] font-semibold leading-[1.14]"
+        className="font-display font-bold text-[clamp(28px,4.4vw,46px)] leading-[1.14]"
         style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
       >
         {children}

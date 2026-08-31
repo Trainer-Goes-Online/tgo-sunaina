@@ -153,7 +153,7 @@ export default function Toolkit() {
           <SectionEyebrow text="GET INSTANT ACCESS TO" />
         </div>
         <h2
-          className="font-display text-[clamp(28px,4.4vw,46px)] font-semibold leading-[1.14]"
+          className="font-display font-bold text-[clamp(28px,4.4vw,46px)] leading-[1.14]"
           style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
         >
           Your 6-Day S.T.A.R.T. Right Experience &amp;{' '}
@@ -176,7 +176,7 @@ export default function Toolkit() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
             <div className="flex shrink-0 flex-col items-start gap-4">
               <span
-                className="font-display text-[44px] font-semibold leading-none"
+                className="font-display font-bold text-[44px] leading-none"
                 style={{ color: C.goldDeep }}
               >
                 {LEAD.n}
@@ -185,12 +185,12 @@ export default function Toolkit() {
             </div>
             <div className="min-w-0 flex-1">
               <h3
-                className="font-display text-[24px] font-semibold leading-snug sm:text-[27px]"
+                className="font-display font-bold text-[24px] leading-snug sm:text-[27px]"
                 style={{ color: C.ink }}
               >
                 {LEAD.title}
               </h3>
-              <p className="mt-1.5 font-display text-[18px] font-semibold" style={{ color: C.goldDeep }}>
+              <p className="mt-1.5 font-display font-bold text-[18px] " style={{ color: C.goldDeep }}>
                 ({rupees(LEAD.value)} Value)
               </p>
               <p className="mt-3.5 max-w-[620px] text-[15px] leading-relaxed" style={{ color: C.inkSoft }}>
@@ -256,21 +256,21 @@ export default function Toolkit() {
                   <div className="flex items-center gap-3">
                     <IconBed icon={b.icon} />
                     <span
-                      className="font-display text-[26px] font-semibold leading-none"
+                      className="font-display font-bold text-[26px] leading-none"
                       style={{ color: C.goldDeep }}
                     >
                       {b.n}
                     </span>
                   </div>
                   <span
-                    className="font-display text-[16px] font-semibold"
+                    className="font-display font-bold text-[16px] "
                     style={{ color: C.goldDeep }}
                   >
                     ({rupees(b.value)} Value)
                   </span>
                 </div>
                 <h3
-                  className="mt-4 font-display text-[19px] font-semibold leading-snug"
+                  className="mt-4 font-display font-bold text-[19px] leading-snug"
                   style={{ color: C.ink }}
                 >
                   {b.title}
@@ -310,7 +310,7 @@ export default function Toolkit() {
             TOTAL REAL VALUE
           </p>
           <p
-            className="mt-2 font-display text-[30px] font-semibold leading-none"
+            className="mt-2 font-display font-bold text-[30px] leading-none"
             style={{ color: C.ink }}
           >
             {rupees(TOTAL_VALUE)}
@@ -330,7 +330,7 @@ export default function Toolkit() {
           >
             ALL FOR JUST
           </p>
-          <p className="kz-lit mt-2 font-display text-[52px] font-semibold leading-none">
+          <p className="kz-lit mt-2 font-display font-bold text-[52px] leading-none">
             {PRICE}
           </p>
           <p className="mt-2 text-[13px]" style={{ color: C.inkSoft }}>

@@ -269,7 +269,7 @@ export default function CheckoutPage() {
             </span>
 
             <h1
-              className="mt-4 font-display text-[22px] font-semibold leading-tight sm:text-[28px] md:text-[34px]"
+              className="mt-4 font-display font-bold text-[22px] leading-tight sm:text-[28px] md:text-[34px]"
               style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
             >
               Add your details to confirm your seat.
@@ -296,7 +296,7 @@ export default function CheckoutPage() {
                 Your details
               </p>
               <h2
-                className="mt-2 font-display text-[20px] font-semibold leading-snug sm:text-[22px]"
+                className="mt-2 font-display font-bold text-[20px] leading-snug sm:text-[22px]"
                 style={{ color: C.ink }}
               >
                 Where should we send your seat?
@@ -519,7 +519,7 @@ function Header() {
       style={{ background: C.plumDeep, color: C.onDark }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <span className="font-display text-[17px] font-semibold">S.T.A.R.T. Right</span>
+        <span className="font-display font-bold text-[17px] ">S.T.A.R.T. Right</span>
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-[13px] font-semibold"
@@ -563,7 +563,7 @@ function OrderSummary() {
             Order summary
           </span>
           <span
-            className="mt-2 block font-display text-[20px] font-semibold leading-snug sm:text-[22px]"
+            className="mt-2 block font-display font-bold text-[20px] leading-snug sm:text-[22px]"
             style={{ color: C.ink }}
           >
             The 6-Day Challenge, in full
@@ -589,7 +589,7 @@ function OrderSummary() {
           style={{ background: C.plumDeep }}
         >
           <span
-            className="font-display text-[10px] font-bold uppercase tracking-[0.16em]"
+            className="font-display font-bold text-[10px] uppercase tracking-[0.16em]"
             style={{ color: C.gold }}
           >
             Live
@@ -607,7 +607,7 @@ function OrderSummary() {
           </p>
         </div>
         <div
-          className="shrink-0 text-right font-display text-[14px] font-semibold tabular-nums sm:text-[15px]"
+          className="shrink-0 text-right font-display font-bold text-[14px] tabular-nums sm:text-[15px]"
           style={{ color: C.ink }}
         >
           {inr(lead.value)}
@@ -664,14 +664,14 @@ function OrderSummary() {
         style={{ background: C.goldWash, border: `1px solid ${C.lineStrong}` }}
       >
         <span
-          className="font-display text-[13px] font-bold uppercase tracking-[0.12em] sm:text-[14px] sm:tracking-[0.14em]"
+          className="font-display font-bold text-[13px] uppercase tracking-[0.12em] sm:text-[14px] sm:tracking-[0.14em]"
           style={{ color: C.ink }}
         >
           Total
         </span>
         <div className="text-right">
           <div
-            className="font-display text-[26px] font-semibold leading-none tabular-nums sm:text-[32px]"
+            className="font-display font-bold text-[26px] leading-none tabular-nums sm:text-[32px]"
             style={{ color: C.goldDeep }}
           >
             {PRICE}

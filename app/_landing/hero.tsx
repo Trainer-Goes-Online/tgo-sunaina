@@ -195,7 +195,7 @@ export function Hero() {
                 else stays warm white, which is what stops the line reading as a
                 highlighter pass. (C2/C3) */}
             <h1
-              className="mt-7 font-display text-[34px] font-semibold leading-[1.1] sm:text-[44px] lg:text-[54px]"
+              className="mt-7 font-display font-bold text-[34px] leading-[1.1] sm:text-[44px] lg:text-[54px]"
               style={{ color: C.onDark }}
             >
               Discover The 60-Min Morning Formula For More Energy, Better Focus
@@ -318,7 +318,7 @@ export function Hero() {
               </span>
 
               <h2
-                className="mt-4 font-display text-[26px] font-semibold leading-[1.16]"
+                className="mt-4 font-display font-bold text-[26px] leading-[1.16]"
                 style={{ color: C.ink }}
               >
                 6-Day &lsquo;Start Your Morning Right&rsquo; Challenge
@@ -333,11 +333,11 @@ export function Hero() {
                 className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-2 border-t pt-6"
                 style={{ borderColor: C.line }}
               >
-                <span className="kz-lit font-display text-[46px] font-semibold leading-none">
+                <span className="kz-lit font-display font-bold text-[46px] leading-none">
                   {PRICE}
                 </span>
                 <span
-                  className="font-display text-[22px] font-semibold line-through"
+                  className="font-display font-bold text-[22px] line-through"
                   style={{ color: C.inkSoft }}
                 >
                   {PRICE_RISES_TO}
@@ -441,7 +441,7 @@ function TrustLedger() {
             </span>
             <span className="leading-tight">
               <span
-                className="block font-display text-[20px] font-semibold"
+                className="block font-display font-bold text-[20px] "
                 style={{ color: C.ink }}
               >
                 {big}

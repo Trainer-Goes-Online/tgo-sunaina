@@ -146,7 +146,7 @@ function Experience() {
                 <Icon weight="duotone" className="h-6 w-6" style={{ color: skin.fg }} />
               </span>
               <h3
-                className="mt-5 font-display text-[19px] font-semibold leading-snug"
+                className="mt-5 font-display font-bold text-[19px] leading-snug"
                 style={{ color: C.ink }}
               >
                 {title}
@@ -333,7 +333,7 @@ function Schedule() {
                   {d.n}
                 </span>
                 <h3
-                  className="mt-3.5 font-display text-[20px] font-semibold leading-snug"
+                  className="mt-3.5 font-display font-bold text-[20px] leading-snug"
                   style={{ color: C.ink }}
                 >
                   {d.title}
@@ -374,7 +374,7 @@ function SessionsBand() {
         </span>
 
         <h2
-          className="mx-auto mt-6 max-w-[620px] font-display text-[clamp(26px,3.8vw,38px)] font-semibold leading-[1.16]"
+          className="mx-auto mt-6 max-w-[620px] font-display font-bold text-[clamp(26px,3.8vw,38px)] leading-[1.16]"
           style={{ color: C.onDark }}
         >
           {SESSION_TIMES} · <span style={{ color: C.gold }}>Live on Zoom</span>

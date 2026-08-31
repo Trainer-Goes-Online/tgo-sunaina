@@ -84,7 +84,7 @@ export default function StickyCta() {
                 would truncate mid-quote on a phone, so the narrow width shows
                 the shorter half of the same name rather than a cut one. */}
             <p
-              className="truncate font-display text-[15px] font-semibold leading-tight sm:text-[16.5px]"
+              className="truncate font-display font-bold text-[15px] leading-tight sm:text-[16.5px]"
               style={{ color: C.ink }}
             >
               <span className="sm:hidden">Start Your Morning Right</span>

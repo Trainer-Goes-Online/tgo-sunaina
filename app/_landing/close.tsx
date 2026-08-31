@@ -160,9 +160,11 @@ function Guide() {
 
           {/* The one object in the section. A quotation mark set in the display
               face, an apricot hairline, and the line set in the display face at
-              medium: the page's editorial voice, not a coloured box. No italic,
-              because Bricolage Grotesque ships none and a synthesised oblique
-              looks cheap at this size. */}
+              medium: the page's editorial voice, not a coloured box. It is the
+              ONLY display element on the site that is not 700, which is why
+              layout.tsx loads a 500 at all. No italic: Plus Jakarta Sans ships
+              one, but it is not loaded, and a synthesised oblique looks cheap
+              at this size. */}
           <figure
             data-lego=""
             className="relative mt-9 rounded-2xl px-7 py-8 sm:px-9"
@@ -180,7 +182,7 @@ function Guide() {
               style={{ color: C.goldMid }}
             />
             <blockquote
-              className="font-display text-[clamp(18px,2.2vw,23px)] font-medium leading-[1.5]"
+              className="font-display font-medium text-[clamp(18px,2.2vw,23px)] leading-[1.5]"
               style={{ color: C.ink }}
             >
               “You don’t need to change your entire life overnight. You need to
@@ -286,7 +288,7 @@ function Mechanism() {
                 <p.icon weight="duotone" className="h-5 w-5" style={{ color: C.goldInk }} />
               </span>
               <span
-                className="font-display text-[18px] font-semibold leading-none"
+                className="font-display font-bold text-[18px] leading-none"
                 style={{ color: C.goldDeep }}
               >
                 {p.n}
@@ -294,7 +296,7 @@ function Mechanism() {
             </span>
             <span className="min-w-0 flex-1">
               <span
-                className="block font-display text-[19px] font-semibold leading-snug"
+                className="block font-display font-bold text-[19px] leading-snug"
                 style={{ color: C.ink }}
               >
                 {p.title}
@@ -525,7 +527,7 @@ function Recap() {
         </div>
 
         <h2
-          className="text-center font-display text-[clamp(26px,3.6vw,40px)] font-semibold leading-[1.14]"
+          className="text-center font-display font-bold text-[clamp(26px,3.6vw,40px)] leading-[1.14]"
           style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
         >
           Recap of Everything{' '}
@@ -556,7 +558,7 @@ function Recap() {
                 </span>
               </span>
               <span
-                className="shrink-0 font-display text-[16px] font-semibold"
+                className="shrink-0 font-display font-bold text-[16px] "
                 style={{ color: C.inkSoft }}
               >
                 {rupees(r.value)}
@@ -578,7 +580,7 @@ function Recap() {
             TOTAL VALUE
           </span>
           <span
-            className="kz-strike font-display text-[22px] font-semibold"
+            className="kz-strike font-display font-bold text-[22px] "
             style={{ color: C.inkSoft }}
           >
             {rupees(RECAP_TOTAL)}
@@ -595,7 +597,7 @@ function Recap() {
           >
             GET EVERYTHING TODAY FOR
           </p>
-          <p className="kz-price kz-lit mt-3 font-display text-[56px] font-semibold leading-none">
+          <p className="kz-price kz-lit mt-3 font-display font-bold text-[56px] leading-none">
             {PRICE}
           </p>
           <p className="mt-2 text-[13px]" style={{ color: C.inkSoft }}>

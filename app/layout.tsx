@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { DM_Serif_Display, Inter } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 import Analytics from '@/components/Analytics';
 import MetaPixel from '@/components/MetaPixel';
@@ -10,38 +10,37 @@ import './globals.css';
 /**
  * Two faces, three voices.
  *
- * Bricolage Grotesque (display) is a humanist grotesque with a deliberate
- * irregularity in its curves: it reads as a person rather than a corporation,
- * which is what a coach-led morning practice needs. It carries width and
- * optical-size axes, so a big morning headline takes its presence from WIDTH
- * and scale rather than from weight. That matters: a bold neutral-grotesque
- * stack reads cheap at display size. It never appears below headline size, and
- * it also sets the wordmark while no logo file exists.
+ * Plus Jakarta Sans (display) is a geometric humanist sans, set at 700 for
+ * every title on the site. Display presence comes from WEIGHT and scale rather
+ * than from a serif's stroke contrast, which is the trade this face makes.
  *
- * Inter (body) does the reading, at a 17px base: an early-morning page is read
- * on a phone before the day starts, and nothing on it relies on a hairline
- * weight. Inter and Bricolage share a grotesque skeleton, so they sit together
- * without friction while staying clearly distinct in temperament.
+ * Inter (body) does the reading at 17px / 1.65, and everything that is not a
+ * title: labels, eyebrows, buttons, UI numerals. The two share a humanist sans
+ * skeleton, so they sit together without friction while staying distinct in
+ * weight and temperament.
  *
  * The third voice, the "spec" one that labels and credentials use, is tracked
- * uppercase Inter rather than a monospace. That is a deliberate exception to
+ * uppercase Inter 700 rather than a monospace. That is a deliberate exception to
  * the house three-voice rule: a mono reads clinical against a stillness,
  * breathwork and affirmations offer, and tracked caps do the same job in the
  * right register. Noted in design-system.project.md.
  */
-/* DM Serif Display ships ONE weight, 400, and that is the whole reason the
-   headings below carry no font-weight class any more. A 400-only face asked for
-   600 does not fall back, the browser SYNTHESISES the bold by smearing the
-   outline, and on a high-contrast serif with hairline strokes that reads as a
-   rendering fault rather than as emphasis. Presence comes from size and from
-   the real italic instead.
+/* Plus Jakarta Sans at 700, for titles. A geometric humanist sans: the display
+   job here is carried by WEIGHT and scale rather than by a serif's contrast.
 
-   The weight array is not optional here either: next/font rejects a
-   non-variable family declared without one. */
-const dmSerif = DM_Serif_Display({
+   Two weights, and only two. 700 is every title. 500 exists for exactly one
+   element, the pull-quote in close.tsx, which is deliberately quieter than a
+   heading and was set at medium long before this face arrived. The family is
+   variable and could ship anything from 200 to 800; loading the two that are
+   actually used keeps the payload honest and makes a synthesised weight
+   impossible by construction.
+
+   Every display element carries an explicit `font-bold` or `font-medium`, and
+   `h1/h2/h3` set 700 in globals.css, so nothing can land on this face at a
+   weight it was not loaded with. */
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400'],
-  style: ['normal', 'italic'],
+  weight: ['500', '700'],
   variable: '--font-display',
   display: 'swap',
 });
@@ -118,7 +117,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${dmSerif.variable} ${inter.variable}`}>
+    <html lang="en-IN" className={`${jakarta.variable} ${inter.variable}`}>
       <body>
         {/* Marks the document as JS-capable BEFORE first paint, so the CSS
             scroll reveals only hide content when JS is there to reveal it.

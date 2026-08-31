@@ -124,7 +124,7 @@ function ThankYou() {
           </span>
 
           <h1
-            className="mt-5 font-display text-[30px] font-semibold leading-[1.05] tracking-tight sm:text-[44px] lg:text-[52px]"
+            className="mt-5 font-display font-bold text-[30px] leading-[1.05] tracking-tight sm:text-[44px] lg:text-[52px]"
             style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
           >
             Your 6-Day Morning Reset is{' '}
@@ -184,7 +184,7 @@ function ThankYou() {
               Important · Step 1 of 1
             </span>
 
-            <h2 className="mt-4 font-display text-[24px] font-semibold leading-tight sm:text-[34px]">
+            <h2 className="mt-4 font-display font-bold text-[24px] leading-tight sm:text-[34px]">
               Join the S.T.A.R.T. Right Inner Circle now.
             </h2>
 
@@ -201,7 +201,7 @@ function ThankYou() {
                 href={WHATSAPP_INVITE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-7 inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display text-[15px] font-semibold"
+                className="group mt-7 inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display font-bold text-[15px] "
                 style={{ color: WA.deep }}
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -232,7 +232,7 @@ function ThankYou() {
           <div className="text-center">
             <SectionEyebrow text="What you'll receive inside" />
             <h2
-              className="mt-3 font-display text-[24px] font-semibold leading-tight sm:text-[32px]"
+              className="mt-3 font-display font-bold text-[24px] leading-tight sm:text-[32px]"
               style={{ color: C.ink }}
             >
               What you&rsquo;ll receive in the{' '}
@@ -291,7 +291,7 @@ function ThankYou() {
             </span>
             <div className="min-w-0">
               <h3
-                className="font-display text-[18px] font-semibold leading-snug sm:text-[20px]"
+                className="font-display font-bold text-[18px] leading-snug sm:text-[20px]"
                 style={{ color: C.ink }}
               >
                 Please be available{' '}
@@ -313,7 +313,7 @@ function ThankYou() {
           <div className="text-center">
             <SectionEyebrow text="Please note" />
             <h2
-              className="mt-3 font-display text-[24px] font-semibold leading-tight sm:text-[32px]"
+              className="mt-3 font-display font-bold text-[24px] leading-tight sm:text-[32px]"
               style={{ color: C.ink }}
             >
               Important <span style={{ color: C.goldDeep }}>policy.</span>
@@ -345,7 +345,7 @@ function ThankYou() {
             className="mt-8 rounded-2xl p-5 text-center"
             style={{ background: C.canvasAlt, border: `1px solid ${C.line}` }}
           >
-            <p className="font-display text-[15px] font-semibold" style={{ color: C.ink }}>
+            <p className="font-display font-bold text-[15px] " style={{ color: C.ink }}>
               Your spot has been reserved exclusively for you.
             </p>
             <p className="mt-1.5 text-[12.5px]" style={{ color: C.inkSoft }}>
@@ -365,7 +365,7 @@ function ThankYou() {
           <div className="text-center">
             <SectionEyebrow text="Quick prep" />
             <h2
-              className="mt-3 font-display text-[24px] font-semibold leading-tight sm:text-[32px]"
+              className="mt-3 font-display font-bold text-[24px] leading-tight sm:text-[32px]"
               style={{ color: C.ink }}
             >
               What to do <span style={{ color: C.goldDeep }}>before the call.</span>
@@ -383,7 +383,7 @@ function ThankYou() {
                 style={{ background: C.canvas, border: `1px solid ${C.line}` }}
               >
                 <span
-                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full font-display text-[11.5px] font-bold"
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full font-display font-bold text-[11.5px] "
                   style={{
                     background: `linear-gradient(135deg, ${C.goldMid}, ${C.goldDeep})`,
                     color: C.canvas,
@@ -432,7 +432,7 @@ function ThankYou() {
         />
         <div className="mx-auto max-w-3xl text-center">
           <h2
-            className="font-display text-[26px] font-semibold leading-tight sm:text-[36px]"
+            className="font-display font-bold text-[26px] leading-tight sm:text-[36px]"
             style={{ color: C.onDark }}
           >
             This is your <span style={{ color: C.gold }}>first step</span>
@@ -449,7 +449,7 @@ function ThankYou() {
                 href={WHATSAPP_INVITE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display text-[15px] font-semibold shadow-2xl transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto sm:text-[16px]"
+                className="group inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-display font-bold text-[15px] shadow-2xl transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto sm:text-[16px]"
                 style={{ color: WA.deep }}
               >
                 <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -480,7 +480,7 @@ function ThankYou() {
               href={WHATSAPP_INVITE}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-2xl py-3.5 font-display text-[14.5px] font-semibold text-white shadow-md"
+              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-2xl py-3.5 font-display font-bold text-[14.5px] text-white shadow-md"
               style={{ background: `linear-gradient(135deg, ${WA.deep}, ${WA.green})` }}
             >
               <WhatsappLogo weight="fill" className="h-5 w-5" />
@@ -525,7 +525,7 @@ function DetailCard({
             {label}
           </p>
           <p
-            className="mt-0.5 font-display text-[14px] font-semibold leading-snug"
+            className="mt-0.5 font-display font-bold text-[14px] leading-snug"
             style={{ color: C.ink }}
           >
             {value}

@@ -64,12 +64,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Plus Jakarta Sans 700. The display face is a SANS again, so the two rules
+   that a serif suspended come back: headings are bold, and they are tracked in.
+   A geometric sans at display size looks loose at 0 and slack at -0.005em;
+   -0.02em is what makes a bold sans headline read as one object rather than as
+   a row of letters. Only 700 is loaded, so nothing here can synthesise. */
 h1,
 h2,
 h3 {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 h1 {
@@ -427,9 +432,12 @@ button {
   background: var(--canvas);
   border: 2px solid var(--line-strong);
   color: var(--ink-soft);
-  font-family: var(--font-display), Georgia, serif;
+  /* A numeral in a 38px disc is UI, not a title, so it stays on the body face:
+     the serif is for titles only. Inter also carries a real 700 here, which a
+     one-weight serif could not. */
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   transition:
     background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
@@ -771,9 +779,9 @@ body {
    apart typographically. Values follow the checkout's scale. */
 .legal-content h2 {
   margin-top: 2.5rem;
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
   color: #58334f;
 }
@@ -782,9 +790,9 @@ body {
 }
 .legal-content h3 {
   margin-top: 1.5rem;
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: #58334f;
 }
 .legal-content p { margin-top: 0.75rem; }

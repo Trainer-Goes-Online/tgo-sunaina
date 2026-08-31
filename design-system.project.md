@@ -159,17 +159,24 @@ drift: `app/globals.css` `:root`, `app/_landing/shared.tsx` `C`, and
 `tailwind.config.ts` `colors`.
 
 ## Type (C1, with one documented exception)
-- **display**: **Bricolage Grotesque** (`--font-display`), variable, with width
-  and optical-size axes. A humanist grotesque whose slight irregularity reads as
-  a person rather than a corporation. Headline presence comes from WIDTH and
-  scale, never from piling on weight, because a bold neutral-grotesque stack
-  reads cheap at display size. Headlines only, never below headline size. It
-  also sets the wordmark while no logo file exists.
-  **It ships no italic**: use the weight axis to differentiate, never a
-  synthesised oblique.
-- **body**: **Inter** (`--font-body`), 17px / 1.65. Shares a grotesque skeleton
-  with the display face, so the two sit together without friction while staying
-  distinct in temperament.
+- **display**: **Plus Jakarta Sans 700** (`--font-display`). Titles and nothing
+  else. A geometric humanist sans: display presence is carried by WEIGHT and
+  scale, which is the trade a sans makes against a serif's contrast.
+  **Two weights are loaded, and only two.** 700 is every title. 500 exists for
+  exactly one element, the pull-quote in `close.tsx`, which is deliberately
+  quieter than a heading. The family is variable and could ship 200 to 800;
+  loading the two that are actually used keeps the payload honest and makes a
+  synthesised weight impossible by construction. All 49 display elements carry
+  an explicit `font-bold` or `font-medium`, and `h1/h2/h3` set 700 in
+  `globals.css`, so nothing can land on this face at a weight it was not
+  loaded with.
+  Tracking is `-0.02em`. A sans at display size looks loose at 0 and slack at
+  `-0.005em`; pulling it in is what makes a bold headline read as one object
+  rather than as a row of letters.
+- **body**: **Inter** (`--font-body`), 17px / 1.65, and **everything that is not
+  a title**. Labels, eyebrows, buttons, prices in the docked bar, UI numerals.
+  The day-spine numeral sits in a 38px disc, which is UI rather than a title, so
+  it lives here and gets a real 700.
 - **spec voice**: *exception:* tracked uppercase Inter 700, not a mono. A
   monospace reads clinical against a stillness, breathwork and affirmations
   offer; tracked caps do the same spec/label job in the right register.
@@ -177,8 +184,15 @@ drift: `app/globals.css` `:root`, `app/_landing/shared.tsx` `C`, and
   whose source copy supplies no eyebrow runs **without one** rather than with an
   invented label (which is why the results beat has none).
 
+> **Face history, so it is not relitigated.** Bricolage Grotesque (width axis)
+> then DM Serif Display 400 then Plus Jakarta Sans 700/500. The serif was tried
+> and replaced within the same session. The lesson worth keeping from it: a display face's WEIGHT COUNT is a
+> structural constraint, not a detail. A one-weight face forces every heading to
+> drop its weight class, and going back reinstates all 49 of them. Check the
+> available weights before swapping a display face, not after.
+
 ## The wordmark
-`app/_landing/brand-mark.tsx` sets "S.T.A.R.T. Right" as **type**, in Bricolage
+`app/_landing/brand-mark.tsx` sets "S.T.A.R.T. Right" as **type**, in Plus Jakarta Sans
 Grotesque, with "S.T.A.R.T." at 800 and "Right" dropped to 400. No logo has been supplied and a placeholder graphic
 would be worse than honest type. It flips to `--gold` on the navy stage and sits
 in `--ink` on cream. To swap in the real mark: drop the SVG at

@@ -35,7 +35,7 @@ export default function LegalPageLayout({
             <ArrowLeft size={14} weight="bold" aria-hidden="true" />
             Back to {LEGAL.brand}
           </Link>
-          <h1 className="mt-5 font-display text-[30px] font-semibold leading-[1.08] sm:text-[38px]">
+          <h1 className="mt-5 font-display font-bold text-[30px] leading-[1.08] sm:text-[38px]">
             {title}
           </h1>
           <p

@@ -35,7 +35,7 @@ export default function BrandMark({
 
   return (
     <span
-      className="inline-flex items-baseline font-display font-semibold"
+      className="inline-flex items-baseline font-display font-bold "
       style={{
         height,
         lineHeight: `${height}px`,
