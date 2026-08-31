@@ -1,11 +1,16 @@
 /**
  * The business facts every legal page needs.
  *
- * ⚠️ PLACEHOLDERS. Razorpay will not approve a live account against these, and
- * a policy naming the wrong entity is worse than no policy. Every value marked
- * TODO must be replaced with what is actually registered before this funnel
- * takes money. They are collected here rather than scattered through three
- * pages so it is one edit, and so a placeholder cannot hide in a paragraph.
+ * FILLED (31 Aug 2026). No field renders as a placeholder any more, so the
+ * policy pages and the footer identity block are safe to show.
+ *
+ * TWO things are still worth confirming before this takes money, both marked
+ * with a warning below and neither visible on the page: the PIN code is missing
+ * from `address`, and `entity` must match the PAN record exactly. A policy
+ * naming the wrong entity is worse than no policy.
+ *
+ * The values are collected here rather than scattered through three pages so it
+ * is one edit, and so a placeholder cannot hide in a paragraph.
  *
  * They render on the page as written, so an unfilled one is visible to anyone
  * who opens the privacy policy rather than buried in a file nobody reads.
@@ -19,32 +24,57 @@
  * which structure the business actually is before filling either.
  */
 export const LEGAL = {
-  /** TODO: the registered entity, exactly as it appears on the GST / PAN
-   *  record. For a sole proprietorship this is the PROPRIETOR'S OWN NAME
-   *  (likely "Sunaina Setia"), not the brand. Confirm the structure first. */
-  entity: '[TODO: registered entity / proprietor name]',
-  /** TODO: the registered trading name, used wherever the law wants
-   *  "trading as". This is the business name, which may or may not be
-   *  "S.T.A.R.T. Right". */
-  tradeName: '[TODO: registered trading name]',
-  /** TODO: registered address, including PIN. */
-  address: '[TODO: registered address]',
-  /** TODO: a reachable phone number. Razorpay's merchant review looks for the
-   *  registered name, a postal address and a working phone plus email on the
-   *  site itself, not only inside a policy page. */
-  phone: '[TODO: contact phone]',
-  /** TODO: the same number, digits and leading + only, for the tel: href.
-   *  e.g. +919876543210 */
-  phoneHref: '',
-  /** TODO: the inbox that is actually monitored. Refund requests and data
-   *  requests both land here. */
-  email: '[TODO: support@ email]',
-  /** TODO: the seat of the district court covering the registered address.
-   *  Worth confirming rather than inferring: the client may prefer a specific
-   *  forum. */
-  jurisdiction: '[TODO: city]',
-  /** TODO: the date these were published. */
-  effectiveDate: '[TODO: date]',
+  /** The registered entity. Confirmed a SOLE PROPRIETORSHIP, which has no
+   *  separate legal person: the proprietor IS the entity, and the business
+   *  name is only a trading name. So this is her own name and `tradeName`
+   *  carries the brand. Everything renders as
+   *  "Sunaina Setia, trading as START RIGHT, Daily dose of wellness", which is
+   *  the correct formulation for the structure.
+   *
+   *  Taken from COPY-SOURCE.md ("Who is Sunaina Setia"), the client's own
+   *  approved copy, rather than invented.
+   *  ⚠️ Must match the PAN record EXACTLY: a middle name, a different spelling
+   *  or a reversed order all make this the wrong person in a contract. Cheap to
+   *  check, expensive to get wrong. */
+  entity: 'Sunaina Setia',
+
+  /** The registered trading name, used wherever the law wants "trading as".
+   *  Confirmed as START RIGHT, which lines up with the S.T.A.R.T. method the
+   *  whole funnel is built on. */
+  tradeName: 'START RIGHT, Daily dose of wellness',
+
+  /** ⚠️ INCOMPLETE: no PIN code was supplied, and "Haryana" is inferred from
+   *  Gurgaon rather than given. Razorpay's merchant review and the refund
+   *  policy both want a full postal address, so append the 6-digit PIN before
+   *  this goes live. */
+  address: 'START RIGHT, Daily dose of wellness, Gurgaon Phase 2, Gurgaon, Haryana',
+
+  /** Razorpay's merchant review looks for the registered name, a postal
+   *  address and a working phone plus email on the SITE itself, not only
+   *  inside a policy page. SiteFooter carries all four. */
+  phone: '+91 85059 11337',
+  /** The same number, digits and leading + only, for the tel: href. */
+  phoneHref: '+918505911337',
+
+  /** The monitored inbox. Refund requests and data-deletion requests both land
+   *  here, and both carry a statutory reply window, so it has to be an address
+   *  someone actually reads. Interpolated into six mailto: links across the
+   *  three policy pages and the footer. */
+  email: 'startright.wellness@gmail.com',
+
+  /** The seat of the district court covering the registered address. Gurgaon
+   *  sits in the Gurugram judicial district.
+   *  ⚠️ Inferred from the address, not supplied. Confirm before publishing if
+   *  a specific forum is preferred. */
+  jurisdiction: 'Gurugram, Haryana',
+
+  /** ⚠️ Set to the date these were written. It must match the date the pages
+   *  actually go live, so bump it on launch day if that slips. */
+  effectiveDate: '31 August 2026',
+
+  /** The funnel-facing name, verbatim from COPY-SOURCE.md. Deliberately NOT
+   *  the same string as `tradeName`: the page sells the method, the policies
+   *  name the business. Change this only if the copy source changes. */
   brand: 'S.T.A.R.T. Right',
   product: '6-Day ‘Start Your Morning Right’ Challenge',
 } as const;
