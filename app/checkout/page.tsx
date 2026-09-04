@@ -30,6 +30,7 @@ import {
   ShieldCheck,
 } from '@phosphor-icons/react/dist/ssr';
 
+import { asset } from '../_landing/asset-version';
 import { CTA_NOTE, PRICE, PRICE_RUPEES, SESSION_TIMES_TZ, START_DATE } from '../_landing/offer';
 import PaymentLogos from '@/components/PaymentLogos';
 import SiteFooter from '@/components/SiteFooter';
@@ -222,15 +223,13 @@ export default function CheckoutPage() {
         amount: order.amount,
         currency: order.currency,
         name: 'S.T.A.R.T. Right',
-        /* ⚠️ MISSING ASSET. Kaizen passes `image:` here so the client's own
-           square lockup sits in the payment sheet, and the brand does not
-           disappear at the one moment card details are typed. No brand file
-           exists in /public on this project yet, so the option is omitted
-           rather than pointed at a 404. When the square logo lands, add:
-             image: `${window.location.origin}${asset('/brand/start-right-square.jpg')}`,
-           ABSOLUTE, not relative: Razorpay renders this inside an iframe served
-           from its own domain, where a bare `/brand/...` resolves against
-           checkout.razorpay.com and silently 404s into a blank tile. */
+        /* The client's square lockup, so the brand does not disappear at the
+           one moment card details are typed. ABSOLUTE, not relative: Razorpay
+           renders this inside an iframe served from its own domain, where a
+           bare `/brand/...` resolves against checkout.razorpay.com and
+           silently 404s into a blank tile. JPG rather than WebP: the sheet is
+           third-party surface and a plain raster is the safe format there. */
+        image: `${window.location.origin}${asset('/brand/start-right-square.jpg')}`,
         description: '6-Day Start Your Morning Right Challenge',
         prefill: {
           name: `${f.firstName.trim()} ${f.lastName.trim()}`.trim(),

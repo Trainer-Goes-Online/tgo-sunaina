@@ -64,16 +64,17 @@ const rupees = (n: number) => `₹${n.toLocaleString('en-IN')}`;
  * pull-quote, which is editorial scaffolding rather than a manufactured
  * structure.
  *
- * Photography of Sunaina has not arrived yet, so the left column runs as three
- * reserved slots at the exact ratios the real shots will take: one portrait
- * lead with two squares beneath it. Nothing reflows when the images land.
+ * The photography is IN: a portrait lead with two squares beneath it, cropped
+ * from the supplied set to the exact ratios the layout reserved. The pair below
+ * is deliberately one close frame and one wide one, so the column reads as a
+ * sequence rather than as three versions of the same shot.
  *
- * To go live, fill PHOTOS with paths. Any entry left null keeps its reserved
- * slot, so the section can also run with only the lead shot supplied.
+ * Any entry set back to null keeps its reserved slot, so the section still runs
+ * if a shot is pulled.
  */
 const PHOTOS: { lead: string | null; small: [string | null, string | null] } = {
-  lead: null,
-  small: [null, null],
+  lead: '/coach/portrait-lead.webp',
+  small: ['/coach/detail-close.webp', '/coach/detail-practice.webp'],
 };
 
 /* One slot. Renders the real image when a path exists and a reserved box at the
@@ -130,8 +131,18 @@ function Guide() {
             alt="Sunaina Setia, Certified Yoga Teacher and Life Coach"
           />
           <div className="grid grid-cols-2 gap-3">
-            <GuideShot src={PHOTOS.small[0]} ratio="1 / 1" label="Detail 1" alt="" />
-            <GuideShot src={PHOTOS.small[1]} ratio="1 / 1" label="Detail 2" alt="" />
+            <GuideShot
+              src={PHOTOS.small[0]}
+              ratio="1 / 1"
+              label="Detail 1"
+              alt="Sunaina Setia"
+            />
+            <GuideShot
+              src={PHOTOS.small[1]}
+              ratio="1 / 1"
+              label="Detail 2"
+              alt="Sunaina Setia in seated practice"
+            />
           </div>
         </div>
 

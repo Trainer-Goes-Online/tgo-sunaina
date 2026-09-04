@@ -16,6 +16,13 @@
  * its own success and swallows its own errors: the caller logs the result and
  * still returns 200.
  *
+ * That contract is exactly why this retries IN PROCESS. Every other integration
+ * on the funnel has a platform retrying behind it; this one has nobody. Razorpay
+ * is deliberately told the webhook succeeded, so a single dropped POST is not
+ * retried by anything, ever, and the buyer never gets the WhatsApp invite or the
+ * guides they paid for. Three attempts with a short backoff, then give up and
+ * report it, matching the 5-Day Pain Reset build.
+ *
  * ── Why this payload carries the Meta match keys too ──────────────────────
  * Pabbly is not only fulfilment; it is the ONLY place the full, unhashed
  * record of a sale exists. Meta receives hashes and nothing descriptive, GA4
@@ -78,53 +85,97 @@ export async function sendPabblyPurchase(
   const url = process.env.PABBLY_WEBHOOK_URL ?? '';
   if (!url) return { ok: false, status: 0 };
 
-  try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      /* Flat keys, no nesting: Pabbly maps fields one level deep, and a nested
-         object arrives as an unusable blob in the step mapper. */
-      body: JSON.stringify({
-        lead_id: s(p.leadId),
-        created_at: s(p.createdAt),
-        first_name: s(p.firstName),
-        last_name: s(p.lastName),
-        email: s(p.email),
-        phone: s(p.phone),
-        city: s(p.city),
-        country_code: s(p.countryCode),
-        fbc: s(p.fbc),
-        fbp: s(p.fbp),
-        client_ip_address: s(p.clientIp),
-        client_user_agent: s(p.clientUserAgent),
-        external_id: s(p.externalId),
-        event_source_url: s(p.eventSourceUrl),
-        amount: p.amountRupees,
-        /* Boolean, not the string "false": a Pabbly router condition on a
-           non-empty string treats "false" as true and would route live sales
-           down the test branch. */
-        is_test: Boolean(p.isTest),
-        purchase_event_id: s(p.purchaseEventId),
-        utm_source: s(p.utmSource),
-        utm_medium: s(p.utmMedium),
-        utm_campaign: s(p.utmCampaign),
-        utm_content: s(p.utmContent),
-        utm_term: s(p.utmTerm),
-        fbclid: s(p.fbclid),
-        referrer: s(p.referrer),
-        landing_url: s(p.landingUrl),
+  /* Built once, outside the retry loop: the body must be byte-identical across
+     attempts so a workflow that dedupes on payment_id sees one sale, not three
+     near-misses. */
+  const body = JSON.stringify({
+    lead_id: s(p.leadId),
+    created_at: s(p.createdAt),
+    first_name: s(p.firstName),
+    last_name: s(p.lastName),
+    email: s(p.email),
+    phone: s(p.phone),
+    city: s(p.city),
+    country_code: s(p.countryCode),
+    fbc: s(p.fbc),
+    fbp: s(p.fbp),
+    client_ip_address: s(p.clientIp),
+    client_user_agent: s(p.clientUserAgent),
+    external_id: s(p.externalId),
+    event_source_url: s(p.eventSourceUrl),
+    amount: p.amountRupees,
+    /* Boolean, not the string "false": a Pabbly router condition on a
+       non-empty string treats "false" as true and would route live sales
+       down the test branch. */
+    is_test: Boolean(p.isTest),
+    purchase_event_id: s(p.purchaseEventId),
+    utm_source: s(p.utmSource),
+    utm_medium: s(p.utmMedium),
+    utm_campaign: s(p.utmCampaign),
+    utm_content: s(p.utmContent),
+    utm_term: s(p.utmTerm),
+    fbclid: s(p.fbclid),
+    referrer: s(p.referrer),
+    landing_url: s(p.landingUrl),
 
-        event: 'purchase',
-        payment_id: s(p.paymentId),
-        order_id: s(p.orderId),
-        name: `${s(p.firstName)} ${s(p.lastName)}`.trim(),
-        currency: s(p.currency),
-        product: s(p.product),
-        occupation: s(p.occupation),
-      }),
-    });
-    return { ok: res.ok, status: res.status };
-  } catch {
-    return { ok: false, status: 0 };
+    event: 'purchase',
+    payment_id: s(p.paymentId),
+    order_id: s(p.orderId),
+    name: `${s(p.firstName)} ${s(p.lastName)}`.trim(),
+    currency: s(p.currency),
+    product: s(p.product),
+    occupation: s(p.occupation),
+  });
+
+  const ATTEMPTS = 3;
+  let status = 0;
+
+  for (let attempt = 1; attempt <= ATTEMPTS; attempt += 1) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        /* Flat keys, no nesting: Pabbly maps fields one level deep, and a
+           nested object arrives as an unusable blob in the step mapper. */
+        body,
+        /* A hanging Pabbly must not hold the Razorpay webhook open until the
+           platform kills the handler. A killed handler never returns 200, so
+           Razorpay retries the whole webhook and Meta and GA4 fire twice: the
+           exact double-count this route is built to avoid. */
+        signal: AbortSignal.timeout(10_000),
+        cache: 'no-store',
+      });
+
+      if (res.ok) {
+        if (attempt > 1) {
+          console.info(`[pabbly] purchase ${p.paymentId} sent on attempt ${attempt}`);
+        }
+        return { ok: true, status: res.status };
+      }
+
+      status = res.status;
+
+      /* A 4xx is a deleted or re-generated workflow URL. No number of retries
+         fixes that, and each one holds the webhook open for longer. */
+      if (res.status >= 400 && res.status < 500) {
+        console.error(`[pabbly] workflow rejected ${p.paymentId}: ${res.status}`);
+        return { ok: false, status: res.status };
+      }
+    } catch {
+      status = 0;
+    }
+
+    if (attempt < ATTEMPTS) {
+      await new Promise((resolve) => {
+        setTimeout(resolve, attempt * 600);
+      });
+    }
   }
+
+  /* Loud, because nothing downstream will catch this: the sale is charged, the
+     buyer is waiting, and no record of them reached the sheet. */
+  console.error(
+    `[pabbly] purchase ${p.paymentId} FAILED after ${ATTEMPTS} attempts (last status ${status})`,
+  );
+  return { ok: false, status };
 }

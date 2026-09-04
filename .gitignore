@@ -5,3 +5,7 @@ out
 .env.local
 .DS_Store
 *.tsbuildinfo
+
+# Source artwork: 22MB of originals, kept out of git and out of the deploy.
+# The compressed, cropped versions that ship live in public/.
+assets-source/

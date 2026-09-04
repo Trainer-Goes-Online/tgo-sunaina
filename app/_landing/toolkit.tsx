@@ -22,9 +22,10 @@
  * forms so the recap reads as a summing-up rather than as a repeat. The recap
  * also keeps the gold surface and the strike-draw, so it stays the peak.
  *
- * No cover art exists for the guides, so these are typographic cards carrying
- * an ordinal and a value rather than mock-up shots. When covers land they slot
- * in above each title.
+ * Cover art is IN. Every one of the six items carries its own mockup, squared
+ * to 1:1 so the five bonus cards tile at exactly one height. The portrait box
+ * shots were padded out to square by stretching their edge columns rather than
+ * flat-filling: these backgrounds carry a soft vignette and a flat fill seams.
  */
 import type { Icon } from '@phosphor-icons/react';
 import {
@@ -42,6 +43,7 @@ import {
 } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
+import { asset } from './asset-version';
 import { legoBrick, legoDelay } from './lego-style';
 import { CHECKOUT_HREF, PRICE } from './offer';
 import { C, MediaPlaceholder, SectionEyebrow } from './shared';
@@ -62,6 +64,7 @@ const LEAD = {
   body: 'Experience six expert-guided mornings combining stillness, movement, affirmations, breathwork & connection in one deliberately sequenced practice for your mind, body & inner self.',
   tag: 'LIVE ACCESS · INCLUDED',
   tagIcon: 'live' as const,
+  image: '/mockups/challenge-live.webp',
 };
 
 const BONUSES = [
@@ -73,6 +76,7 @@ const BONUSES = [
     body: 'A printable collection of Sunaina’s guided affirmations to help you strengthen your inner dialogue, build self-belief and start speaking to yourself more positively.',
     tag: 'INSTANT ACCESS · INCLUDED',
     tagIcon: 'instant' as const,
+    image: '/mockups/guide-affirmations.webp',
   },
   {
     n: '03',
@@ -82,6 +86,7 @@ const BONUSES = [
     body: 'A simple daily tracker to record how you feel before and after your morning practice, so you can see the difference you’re creating in your own numbers.',
     tag: 'INSTANT ACCESS · INCLUDED',
     tagIcon: 'instant' as const,
+    image: '/mockups/guide-scorecard.webp',
   },
   {
     n: '04',
@@ -91,6 +96,7 @@ const BONUSES = [
     body: 'A guided evening breathing practice to help quiet a racing mind, release the day and settle into a calmer state before sleep.',
     tag: 'INSTANT ACCESS · INCLUDED',
     tagIcon: 'instant' as const,
+    image: '/mockups/track-breathwork.webp',
   },
   {
     n: '05',
@@ -100,6 +106,7 @@ const BONUSES = [
     body: 'Join an uplifting WhatsApp community of people practising alongside you, so you have the connection, encouragement and accountability to keep showing up.',
     tag: 'COMMUNITY ACCESS · INCLUDED',
     tagIcon: 'community' as const,
+    image: '/mockups/community-inner-circle.webp',
   },
   {
     n: '06',
@@ -109,11 +116,36 @@ const BONUSES = [
     body: 'Keep some of Sunaina’s most-loved stories close for the mornings when motivation feels low, giving you a little perspective, positivity and reason to show up again.',
     tag: 'INSTANT ACCESS · INCLUDED',
     tagIcon: 'instant' as const,
+    image: '/mockups/guide-one-good-story.webp',
   },
 ];
 
 /** Computed, never typed. The source says ₹5,485 and the items say so too. */
 const TOTAL_VALUE = [LEAD, ...BONUSES].reduce((sum, item) => sum + item.value, 0);
+
+/* The art slot. Renders the real mockup when a path is set and the reserved
+   frame at the same ratio when it is not, so the two states are never
+   different sizes and a pulled asset cannot collapse a card. */
+function CoverArt({
+  image,
+  label,
+  className = '',
+}: {
+  image?: string;
+  label: string;
+  className?: string;
+}) {
+  if (!image) return <MediaPlaceholder ratio="1 / 1" label={label} className={className} />;
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src={asset(image)}
+      alt={label}
+      className={`aspect-square w-full rounded-2xl object-cover ${className}`}
+      loading="lazy"
+    />
+  );
+}
 
 /* A bed, not a bare glyph: at this size an unbedded icon reads as debris next
    to a 26px ordinal. Gold-pale is the page's established icon bed. */
@@ -203,9 +235,9 @@ export default function Toolkit() {
 
             {/* Reserved at the ratio the real still will use, so nothing
                 reflows when the art lands. */}
-            <MediaPlaceholder
-              ratio="4 / 3"
-              label="Challenge still"
+            <CoverArt
+              image={LEAD.image}
+              label={LEAD.title}
               className="w-full sm:w-[240px] sm:shrink-0"
             />
           </div>
@@ -250,7 +282,7 @@ export default function Toolkit() {
               >
                 {/* Cover art sits above the title, which is where the guides'
                     real covers were always going to go. */}
-                <MediaPlaceholder ratio="16 / 10" label="Guide cover" className="mb-6" />
+                <CoverArt image={b.image} label={b.title} className="mb-6" />
 
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">

@@ -12,12 +12,15 @@
  * So every replaced asset gets a new URL instead. Bump this ONE value in the
  * same pass as any artwork swap and every reference moves together.
  *
- * v1: nothing in /public yet. The photographs, the testimonial clips and the
- *     screenshot wall are all still unsupplied, so every slot on the landing
- *     page is a MediaPlaceholder or a PendingFrame. Bump to '2' in the same
- *     pass as the first artwork drop, and again on every in-place replacement.
+ * v1: nothing in /public yet.
+ * v2: the seven deliverable mockups (/public/mockups), the coach photography
+ *     (/public/coach) and the square brand lockup (/public/brand) all landed
+ *     on 4 Sep 2026. One bump covers the lot: they were all NEW paths, so each
+ *     already carried a unique cache key. The next bump is owed the first time
+ *     a file is replaced IN PLACE under a name that has already shipped.
+ *     Still unsupplied: a vector or transparent logo for the header wordmark.
  */
-export const ASSET_V = '1';
+export const ASSET_V = '2';
 
 /** Appends the version to a /public path. Pass through unchanged if there is
  *  nothing to version, so a null slot stays a placeholder. */

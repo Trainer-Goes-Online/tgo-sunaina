@@ -40,7 +40,8 @@ import {
   SESSION_TIMES,
   START_DATE,
 } from './offer';
-import { C, MediaPlaceholder } from './shared';
+import { asset } from './asset-version';
+import { C } from './shared';
 
 /* The CTA copy is the client's, so it is set here from the source rather than
    paraphrased: label + the reassurance line welded under it. The price is
@@ -207,10 +208,15 @@ export function Hero() {
                 headline, so the hero has nothing to look at between the two.
                 On desktop the card is already beside the headline and a second
                 image here would compete with it, so this is hidden from lg up. */}
-            <MediaPlaceholder
-              ratio="16 / 10"
-              label="Hero image"
-              className="mt-7 lg:hidden"
+            {/* 4/5, not the 16/10 this slot reserved: every photograph
+                supplied is portrait, and a landscape crop of one throws away
+                most of the frame or her face with it. Portrait also suits the
+                slot, which only ever renders on a phone. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={asset('/coach/hero-coach.webp')}
+              alt="Sunaina Setia, Certified Yoga Teacher and Life Coach"
+              className="mt-7 aspect-[4/5] w-full rounded-2xl object-cover lg:hidden"
             />
 
             <p
@@ -302,12 +308,17 @@ export function Hero() {
                   '0 0 0 8px rgba(242,180,95,0.07), 0 34px 70px -30px rgba(0,0,0,0.6)',
               }}
             >
-              {/* Art sits above the eyebrow, reserved at its final ratio so the
-                  card does not change height when a still or a clip lands. */}
-              <MediaPlaceholder
-                ratio="16 / 9"
-                label="Coach clip or session still"
-                className="mb-6"
+              {/* Art sits above the eyebrow. The offer composite goes HERE
+                  rather than in the mobile-only hero slot because this card is
+                  the conversion object, it shows at every breakpoint, and the
+                  artwork carries the ₹497 the card is asking for. 3/2 is the
+                  file's true ratio; forcing it to 16/9 would crop the price
+                  badge off the right edge. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset('/mockups/toolkit-overview.webp')}
+                alt="The complete S.T.A.R.T. Right toolkit: six guides, live sessions and community support"
+                className="mb-6 aspect-[3/2] w-full rounded-2xl object-cover"
               />
 
               <span

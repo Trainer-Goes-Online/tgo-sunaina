@@ -3,53 +3,45 @@
 /**
  * Section 7 · proof.
  *
- * TWO proof surfaces back to back, deliberately rendered as two DIFFERENT
- * things: three exhibit-framed video cards, then a column-masonry wall of text
- * screenshots. Repeating one treatment twice reads as one long section the eye
- * gives up on; the change of form is what makes the second one land as more
- * proof rather than more of the same.
+ * ONE proof surface: nine exhibit-framed video cards. The screenshot wall that
+ * used to sit under it is cut. Its source table was empty and no assets were
+ * ever supplied, and nine real clients on camera do not need a second, weaker
+ * form of the same claim propping them up.
  *
- * ⚠️ NO PROOF ASSETS EXIST YET. The source copy carries a "Testimonial" table
- * and a "Text Screenshot" table with no items in either, so that is exactly
- * what renders: labelled empty frames at the ratios the real ones will take.
- * Nothing here invents a name, a quote, a city, a star rating or a result. A
- * fabricated testimonial is the one thing a wellness page can never come back
- * from.
+ * 7a IS LIVE: nine real client clips, supplied by Atul, hosted on the Trainer
+ * GoesOnline Vimeo account and embedded as players rather than as files. Their
+ * true dimensions are 240x426, so the frame is 9/16 and nothing letterboxes.
+ * Every iframe is lazy: nine eager Vimeo players would each pull the platform's
+ * own runtime on first paint. The names are the only meta shown, exactly as
+ * supplied, with no invented city, star rating, quote or result.
  *
- * The counts below (3 clips, 6 screenshots) are LAYOUT, not copy: the source
- * names the two proof forms without saying how many of each exist. They are the
- * counts that tile cleanly, and they move the moment the client says how many
- * they actually have.
- *
- * TO GO LIVE: fill TESTIMONIALS with real clips (add `src`, and `name`/`meta`
- * only if the client has consent to show them) and SCREENSHOTS with real image
- * paths. Both grids render the real thing the moment the data is there; no
- * markup below has to change. If assets are still missing at launch, CUT this
- * section rather than shipping the frames.
+ * PendingFrame stays: it is the empty state for any card whose clip is pulled
+ * or replaced later, so a missing id reads as a reserved frame rather than as a
+ * hole in the grid.
  */
 import { Images } from '@phosphor-icons/react/dist/ssr';
 
-import { asset } from './asset-version';
 import { legoBrick } from './lego-style';
 import { C, SectionHeading } from './shared';
 
-type Testimonial = { label: string; src?: string; poster?: string; meta?: string };
-type Screenshot = { label: string; src?: string; alt?: string };
+type Testimonial = { label: string; vimeoId?: string; meta?: string };
 
+/* Names exactly as Atul supplied them, in the order he supplied them. `label`
+   carries the accessible name of the player; `meta` is the caption under the
+   card. They are the same string because a name is all we have been given, and
+   a city or a result would have to be invented to fill the line. */
 const TESTIMONIALS: Testimonial[] = [
-  { label: 'Testimonial 1' },
-  { label: 'Testimonial 2' },
-  { label: 'Testimonial 3' },
+  { label: 'Pooja', meta: 'Pooja', vimeoId: '1223573097' },
+  { label: 'Munni', meta: 'Munni', vimeoId: '1223573921' },
+  { label: 'Rakesh', meta: 'Rakesh', vimeoId: '1223573918' },
+  { label: 'Pachuri', meta: 'Pachuri', vimeoId: '1223573919' },
+  { label: 'Kanchan', meta: 'Kanchan', vimeoId: '1223573920' },
+  { label: 'Neelam', meta: 'Neelam', vimeoId: '1223574061' },
+  { label: 'Pinky', meta: 'Pinky', vimeoId: '1223574098' },
+  { label: 'Tarun', meta: 'Tarun', vimeoId: '1223574207' },
+  { label: 'Renu', meta: 'Renu', vimeoId: '1223574333' },
 ];
 
-const SCREENSHOTS: Screenshot[] = [
-  { label: 'Text Screenshot' },
-  { label: 'Text Screenshot' },
-  { label: 'Text Screenshot' },
-  { label: 'Text Screenshot' },
-  { label: 'Text Screenshot' },
-  { label: 'Text Screenshot' },
-];
 
 /* The empty state. Flat, ruled and honestly labelled: no gradient standing in
    for a photograph, and no invented poster art. It should look like a frame
@@ -89,7 +81,7 @@ export default function Proof() {
           Poster in a mat with an inner hairline ring, so each card reads as an
           exhibit rather than as a quote box, with an on-brand play disc instead
           of a platform-red triangle. */}
-      <ul className="mx-auto mt-14 grid max-w-[360px] grid-cols-1 gap-5 sm:max-w-[1080px] sm:grid-cols-3">
+      <ul className="mx-auto mt-14 grid max-w-[340px] grid-cols-1 gap-5 sm:max-w-[960px] sm:grid-cols-3">
         {TESTIMONIALS.map((t, idx) => (
           <li
             key={t.label}
@@ -106,24 +98,30 @@ export default function Proof() {
             }}
           >
             <div
-              className="relative flex aspect-[9/14] items-center justify-center overflow-hidden rounded-2xl"
+              className="relative flex aspect-[9/16] items-center justify-center overflow-hidden rounded-2xl"
               style={{
                 background: C.canvasAlt,
                 boxShadow: `inset 0 0 0 1px ${C.line}`,
               }}
             >
-              {t.src ? (
-                /* No custom play disc over a native player: the browser's own
-                   control is the affordance, and a decorative one on top of it
-                   only gets in the way of the thing the reader is aiming at. */
-                <video
-                  src={asset(t.src)}
-                  poster={t.poster ? asset(t.poster) : undefined}
-                  controls
-                  playsInline
-                  preload="metadata"
-                  className="h-full w-full object-cover"
-                  aria-label={t.label}
+              {t.vimeoId ? (
+                /* No custom play disc over the player: Vimeo's own control is
+                   the affordance, and a decorative one on top of it only gets
+                   in the way of the thing the reader is aiming at.
+
+                   loading="lazy" is doing real work here. Nine eager embeds
+                   would each fetch the Vimeo runtime before the reader has
+                   scrolled anywhere near them. dnt=1 asks Vimeo not to track
+                   the viewer, which is both the decent default and one less
+                   thing for the privacy policy to have to cover. */
+                <iframe
+                  src={`https://player.vimeo.com/video/${t.vimeoId}?dnt=1`}
+                  title={t.label}
+                  loading="lazy"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  className="h-full w-full border-0"
                 />
               ) : (
                 <PendingFrame label={t.label} note="Video clip pending" />
@@ -140,56 +138,6 @@ export default function Proof() {
           </li>
         ))}
       </ul>
-
-      {/* ── 7b · the wall ────────────────────────────────────────────────
-          A different form on purpose: volume of proof at a glance, in a
-          column-masonry so real screenshots of different heights tile without
-          leaving holes. Separated by a hairline flourish rather than by a
-          second headline, because the copy does not carry one. */}
-      <div className="mx-auto mt-16 max-w-[1080px]">
-        <div className="mb-10 flex items-center justify-center gap-3" aria-hidden>
-          <span
-            className="h-px w-16"
-            style={{ background: `linear-gradient(90deg, transparent, ${C.goldMid})` }}
-          />
-          <span className="text-[11px]" style={{ color: C.goldDeep }}>
-            ✦
-          </span>
-          <span
-            className="h-px w-16"
-            style={{ background: `linear-gradient(90deg, ${C.goldMid}, transparent)` }}
-          />
-        </div>
-
-        <div className="kz-masonry">
-          {SCREENSHOTS.map((s, idx) => (
-            <figure
-              key={idx}
-              data-lego=""
-              className="lego-hover-sm overflow-hidden rounded-2xl"
-              style={{
-                ...legoBrick(idx, 70),
-                background: C.canvas,
-                border: `1px solid ${C.line}`,
-              }}
-            >
-              {s.src ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={asset(s.src)}
-                  alt={s.alt || ''}
-                  className="block h-auto w-full"
-                  loading="lazy"
-                />
-              ) : (
-                <span className="flex aspect-[4/5] w-full items-center justify-center">
-                  <PendingFrame label={s.label} note="Screenshot pending" />
-                </span>
-              )}
-            </figure>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
