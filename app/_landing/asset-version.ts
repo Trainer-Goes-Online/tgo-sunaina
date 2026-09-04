@@ -18,9 +18,12 @@
  *     on 4 Sep 2026. One bump covers the lot: they were all NEW paths, so each
  *     already carried a unique cache key. The next bump is owed the first time
  *     a file is replaced IN PLACE under a name that has already shipped.
- *     Still unsupplied: a vector or transparent logo for the header wordmark.
+ * v3: the transparent logo landed (4 Sep 2026). The lockup, the monogram cut
+ *     from it and the favicons are all new paths, but the bump is owed anyway:
+ *     the two coach photographs were renamed IN PLACE, so /coach/detail-close
+ *     now serves different bytes than the name has already served.
  */
-export const ASSET_V = '2';
+export const ASSET_V = '3';
 
 /** Appends the version to a /public path. Pass through unchanged if there is
  *  nothing to version, so a null slot stays a placeholder. */

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft } from '@phosphor-icons/react/dist/ssr';
 
+import BrandMark from '@/app/_landing/brand-mark';
 import { LEGAL } from '@/app/_landing/legal';
 import { C } from '@/app/_landing/shared';
 
@@ -27,6 +28,12 @@ export default function LegalPageLayout({
         style={{ background: C.plumDeep, color: C.onDark }}
       >
         <div className="mx-auto max-w-3xl">
+          {/* Razorpay's merchant reviewer opens these pages directly. An
+              unbranded policy page reads as a template someone pasted in. */}
+          <span className="mb-7 flex">
+            <BrandMark height={54} onDark />
+          </span>
+
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold"

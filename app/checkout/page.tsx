@@ -33,6 +33,7 @@ import {
 import { asset } from '../_landing/asset-version';
 import { CTA_NOTE, PRICE, PRICE_RUPEES, SESSION_TIMES_TZ, START_DATE } from '../_landing/offer';
 import PaymentLogos from '@/components/PaymentLogos';
+import BrandMark from '../_landing/brand-mark';
 import SiteFooter from '@/components/SiteFooter';
 import { collectSignals } from '@/lib/client-signals';
 import {
@@ -518,7 +519,7 @@ function Header() {
       style={{ background: C.plumDeep, color: C.onDark }}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <span className="font-display font-bold text-[17px] ">S.T.A.R.T. Right</span>
+        <BrandMark height={46} onDark />
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-[13px] font-semibold"

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import BrandMark from '@/app/_landing/brand-mark';
 import { LEGAL } from '@/app/_landing/legal';
 import { C } from '@/app/_landing/shared';
 
@@ -12,9 +13,11 @@ import { C } from '@/app/_landing/shared';
  * policy links are present wherever someone lands, including on a checkout
  * they reached from an ad.
  *
- * `children` is an optional slot above the disclaimer for page-specific detail
- * (the landing page puts its brand mark and cohort dates there). Everything
- * below that slot is identical on all three pages, by design.
+ * The brand mark is rendered HERE rather than passed in, which is what makes it
+ * appear on the checkout and the thank-you page as well. It used to be part of
+ * the landing page's colophon children, so those two pages had a footer with no
+ * mark on it at all. `children` remains an optional slot beneath it for
+ * page-specific detail (the landing page puts its cohort dates there).
  *
  * The disclaimer text is the CLIENT'S OWN WORDING, moved verbatim from the
  * Disclaimer block at the end of the source copy doc. It is legal copy: do not
@@ -25,6 +28,10 @@ export default function SiteFooter({ children }: { children?: React.ReactNode })
   return (
     <footer className="px-4 py-10 sm:px-6 sm:py-12" style={{ background: C.plumDeep }}>
       <div className="mx-auto max-w-[1180px] text-center">
+        <span className="mb-6 inline-flex">
+          <BrandMark height={66} onDark />
+        </span>
+
         {children}
 
         <p

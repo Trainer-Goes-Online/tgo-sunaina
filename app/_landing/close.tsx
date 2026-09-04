@@ -36,7 +36,6 @@ import Link from 'next/link';
 import SiteFooter from '@/components/SiteFooter';
 
 import { asset } from './asset-version';
-import BrandMark from './brand-mark';
 import { legoBrick, legoDelay } from './lego-style';
 import { CHECKOUT_HREF, PRICE, SESSION_TIMES, START_DATE } from './offer';
 import {
@@ -74,7 +73,7 @@ const rupees = (n: number) => `₹${n.toLocaleString('en-IN')}`;
  */
 const PHOTOS: { lead: string | null; small: [string | null, string | null] } = {
   lead: '/coach/portrait-lead.webp',
-  small: ['/coach/detail-close.webp', '/coach/detail-practice.webp'],
+  small: ['/coach/detail-close-2.webp', '/coach/detail-practice.webp'],
 };
 
 /* One slot. Renders the real image when a path exists and a reserved box at the
@@ -632,10 +631,6 @@ function Recap() {
 function Colophon() {
   return (
     <SiteFooter>
-      <span className="mb-6 inline-flex">
-        <BrandMark height={42} onDark />
-      </span>
-
       <p className="mx-auto mb-8 max-w-[640px] text-[13px]" style={{ color: C.onDarkMute }}>
         <span className="inline-block">
           Starts {START_DATE} · {SESSION_TIMES} · Live on Zoom

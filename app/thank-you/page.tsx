@@ -50,6 +50,7 @@ import {
   START_DATE,
   WHATSAPP_INVITE,
 } from '../_landing/offer';
+import BrandMark from '../_landing/brand-mark';
 import SiteFooter from '@/components/SiteFooter';
 import { C } from '../_landing/shared';
 import { trackPurchase } from '@/lib/track';
@@ -105,6 +106,17 @@ function ThankYou() {
 
   return (
     <main style={{ background: C.canvasAlt }}>
+      {/* ── Masthead ─────────────────────────────────────────────────────
+          The mark and nothing else. A buyer arrives here from a payment sheet
+          or from an emailed link, and this is often the first surface that
+          carries the brand at any size. No nav and no way back: the next step
+          is the Inner Circle button below, not a return to the sales page. */}
+      <header className="px-4 py-5 sm:px-6" style={{ background: C.plumDeep }}>
+        <div className="mx-auto flex max-w-6xl justify-center sm:justify-start">
+          <BrandMark height={46} onDark />
+        </div>
+      </header>
+
       {/* ── Confirmation ─────────────────────────────────────────────── */}
       <section className="px-5 pb-14 pt-12 text-center md:pb-20 md:pt-20">
         <div className="mx-auto max-w-3xl">

@@ -142,7 +142,7 @@ export function AnnouncementBar() {
 export function SiteHeader() {
   return (
     <div className="mx-auto flex max-w-[1180px] items-center justify-center px-5 pb-2 pt-6 sm:justify-start md:px-8">
-      <BrandMark height={44} onDark priority />
+      <BrandMark height={76} onDark priority />
     </div>
   );
 }
@@ -214,7 +214,7 @@ export function Hero() {
                 slot, which only ever renders on a phone. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={asset('/coach/hero-coach.webp')}
+              src={asset('/coach/detail-close.webp')}
               alt="Sunaina Setia, Certified Yoga Teacher and Life Coach"
               className="mt-7 aspect-[4/5] w-full rounded-2xl object-cover lg:hidden"
             />
