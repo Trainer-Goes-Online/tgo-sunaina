@@ -204,21 +204,6 @@ export function Hero() {
               <span style={{ color: C.gold }}>in just 6 days</span>
             </h1>
 
-            {/* Mobile only. On a phone the offer card is a long scroll below the
-                headline, so the hero has nothing to look at between the two.
-                On desktop the card is already beside the headline and a second
-                image here would compete with it, so this is hidden from lg up. */}
-            {/* 4/5, not the 16/10 this slot reserved: every photograph
-                supplied is portrait, and a landscape crop of one throws away
-                most of the frame or her face with it. Portrait also suits the
-                slot, which only ever renders on a phone. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={asset('/coach/detail-close.webp')}
-              alt="Sunaina Setia, Certified Yoga Teacher and Life Coach"
-              className="mt-7 aspect-[4/5] w-full rounded-2xl object-cover lg:hidden"
-            />
-
             <p
               className="mx-auto mt-6 max-w-[600px] text-[16px] leading-[1.7] lg:mx-0"
               style={{ color: C.onDarkMute }}
