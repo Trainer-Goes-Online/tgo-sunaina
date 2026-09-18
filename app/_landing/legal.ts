@@ -76,5 +76,5 @@ export const LEGAL = {
    *  the same string as `tradeName`: the page sells the method, the policies
    *  name the business. Change this only if the copy source changes. */
   brand: 'S.T.A.R.T. Right',
-  product: '6-Day ‘Start Your Morning Right’ Challenge',
+  product: '5-Day ‘Start Your Morning Right’ Challenge',
 } as const;

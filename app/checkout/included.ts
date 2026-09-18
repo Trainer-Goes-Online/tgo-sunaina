@@ -10,7 +10,7 @@
  * both must, or the checkout promises something the page did not.
  */
 export const RECAP: { title: string; value: number }[] = [
-  { title: '6-Day Live ‘Start Your Morning Right’ Challenge', value: 2500 },
+  { title: '5-Day Live ‘Start Your Morning Right’ Challenge', value: 2500 },
   { title: 'The ‘Say It To Yourself’ Affirmation Guide', value: 497 },
   { title: 'The S.T.A.R.T. Right Scorecard', value: 497 },
   { title: 'The Wind Down Breathwork Track', value: 497 },

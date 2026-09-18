@@ -45,7 +45,7 @@ import Toolkit from './toolkit';
 
 /* The client's CTA copy, set from the source. The price is interpolated, never
    typed. */
-const CTA_LABEL = `Start Your 6-Day Morning Reset · ${PRICE}`;
+const CTA_LABEL = `Start Your 5-Day Morning Reset · ${PRICE}`;
 const CTA_NOTE = "Full Refund If You Don't Love Day One";
 
 /* Three beds, rotated. Not seven: the brand has three colours, and a card grid
@@ -58,7 +58,7 @@ const BEDS = [
   { bed: C.roseBed, fg: C.ink },
 ];
 
-/* ══ 3 · Here's What You'll Experience In 6 Days ═══════════════════════════
+/* ══ 3 · Here's What You'll Experience In 5 Days ═══════════════════════════
    Six parallel capabilities, each with a title and a body. A set, not a
    sequence, so it is a grid of equal pieces and the ordering carries no
    meaning the reader has to follow. */
@@ -100,7 +100,7 @@ function Experience() {
     <section className="px-4 py-12 sm:py-20 lg:py-24" style={{ background: C.canvas }}>
       <SectionHeading sub="A fun, live morning experience designed to help you feel the difference in your mind, body & energy before making it a part of your everyday life.">
         Here&apos;s What You&apos;ll Experience{' '}
-        <span style={{ color: C.goldDeep }}>In 6 Days</span>
+        <span style={{ color: C.goldDeep }}>In 5 Days</span>
       </SectionHeading>
 
       <ul className="mx-auto mt-14 grid max-w-[1120px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -165,15 +165,18 @@ function Experience() {
 /* ══ 4 · Your 5-Day Schedule ═══════════════════════════════════════════════
    The signature beat, and the page's ONE heavy motion moment.
 
-   Six mornings are a genuine sequence: each one is described as building on
-   the last, so the structure is a spine with a filling rail rather than six
+   Five mornings are a genuine sequence: each one is described as building on
+   the last, so the structure is a spine with a filling rail rather than five
    cards in a row. The rail's progress is a single CSS variable written by a
    rAF-throttled scroll handler; nodes ignite as the fill reaches them.
 
-   ⚠️ FLAG FOR ATUL: the source heads this section "Your 5-Day Schedule" and
-   then lists SIX days (DAY 01 to DAY 06), and the deck under it says "6
-   mornings". Both are rendered exactly as written. One of the two numbers is
-   wrong and only the client can say which. Not silently corrected here. */
+   THE SOURCE CONTRADICTION IS RESOLVED (2026-09-18, Atul). This section was
+   headed "Your 5-Day Schedule" while listing SIX days and decking "6
+   mornings"; both were rendered as written because only the client could say
+   which number was wrong. It is five. The old DAY 05 (see your own shift) and
+   DAY 06 (understand the method, what's next) are now one DAY 05 carrying
+   both, written to the same length as the days around it so the spine's
+   cards stay even. */
 const DAYS = [
   {
     n: 'DAY 01',
@@ -197,13 +200,8 @@ const DAYS = [
   },
   {
     n: 'DAY 05',
-    title: 'See Your Own Shift',
-    body: 'Complete your fifth S.T.A.R.T. morning, with another fresh combination of practices, revisit your personal baseline and see what has changed across the five days.',
-  },
-  {
-    n: 'DAY 06',
-    title: 'Understand The Method. Discover What’s Next',
-    body: 'Step beyond the practice with an interactive session on the S.T.A.R.T. Right Method, why it works and how you can continue building on what you’ve started.',
+    title: 'See Your Shift. Understand The Method',
+    body: 'Complete your fifth S.T.A.R.T. morning, revisit your personal baseline and see what has changed, then step beyond the practice to understand why the method works and what comes next.',
   },
 ];
 
@@ -212,7 +210,7 @@ const DAYS = [
  *
  * Writes `--tl-p` (0 to 1) straight onto the <ol> node, so the rail fills
  * without React re-rendering once per frame. The only React state is `active`,
- * which changes six times per pass at most.
+ * which changes five times per pass at most.
  *
  * The "read line" sits at 62% of the viewport height rather than the middle: a
  * day should light as it arrives at the comfortable reading position, not once
@@ -277,7 +275,7 @@ function Schedule() {
 
   return (
     <section className="px-4 py-12 sm:py-20 lg:py-24" style={{ background: C.canvasAlt }}>
-      <SectionHeading sub="6 mornings. 60 minutes each. One powerful formula to help you start every day at your best.">
+      <SectionHeading sub="5 mornings. 60 minutes each. One powerful formula to help you start every day at your best.">
         Your <span style={{ color: C.goldDeep }}>5-Day Schedule</span>
       </SectionHeading>
 

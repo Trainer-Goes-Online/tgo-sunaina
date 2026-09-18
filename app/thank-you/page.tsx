@@ -69,7 +69,7 @@ const COMMUNITY_BENEFITS: { icon: typeof CheckCircle; text: string }[] = [
   { icon: ChatCircleDots, text: 'Daily Zoom session links' },
   { icon: Megaphone, text: 'Session reminders before class' },
   { icon: Notebook, text: 'Instructions for each day' },
-  { icon: Heart, text: 'Support across the 6 mornings' },
+  { icon: Heart, text: 'Support across the 5 mornings' },
   { icon: Person, text: 'Important updates from Sunaina' },
 ];
 
@@ -139,7 +139,7 @@ function ThankYou() {
             className="mt-5 font-display font-bold text-[30px] leading-[1.05] tracking-tight sm:text-[44px] lg:text-[52px]"
             style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
           >
-            Your 6-Day Morning Reset is{' '}
+            Your 5-Day Morning Reset is{' '}
             <span style={{ color: C.goldDeep }}>Confirmed.</span>
           </h1>
 
@@ -149,7 +149,7 @@ function ThankYou() {
           >
             You are officially enrolled in the{' '}
             <strong style={{ color: C.ink }}>
-              6-Day &lsquo;Start Your Morning Right&rsquo; Challenge.
+              5-Day &lsquo;Start Your Morning Right&rsquo; Challenge.
             </strong>{' '}
             Please read this page carefully: your access depends on the next
             step.
@@ -283,7 +283,7 @@ function ThankYou() {
           >
             <Warning weight="fill" className="mr-1.5 inline-block h-4 w-4 align-text-bottom" />
             Please do <strong>not mute</strong> or{' '}
-            <strong>exit the community</strong> during these <strong>6 days</strong>.
+            <strong>exit the community</strong> during these <strong>5 days</strong>.
           </p>
         </div>
       </section>

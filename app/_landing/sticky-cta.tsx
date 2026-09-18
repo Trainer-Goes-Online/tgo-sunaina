@@ -20,7 +20,7 @@ import { CHECKOUT_HREF, PRICE, SESSION_TIMES, START_DATE } from './offer';
 import { C } from './shared';
 
 /* The client's CTA copy, set from the source. The price is interpolated. */
-const CTA_LABEL = `Start Your 6-Day Morning Reset · ${PRICE}`;
+const CTA_LABEL = `Start Your 5-Day Morning Reset · ${PRICE}`;
 
 export default function StickyCta() {
   const [show, setShow] = useState(false);
@@ -89,7 +89,7 @@ export default function StickyCta() {
             >
               <span className="sm:hidden">Start Your Morning Right</span>
               <span className="hidden sm:inline">
-                6-Day &lsquo;Start Your Morning Right&rsquo; Challenge
+                5-Day &lsquo;Start Your Morning Right&rsquo; Challenge
               </span>
               <span className="mx-1.5" style={{ color: C.lineStrong }}>
                 ·

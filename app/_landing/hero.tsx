@@ -34,6 +34,7 @@ import BrandMark from './brand-mark';
 import { legoBrick, legoDelay } from './lego-style';
 import {
   CHECKOUT_HREF,
+  LIVES_IMPACTED,
   PRICE,
   PRICE_RISES_TO,
   PRICE_RUPEES,
@@ -46,14 +47,13 @@ import { C } from './shared';
 /* The CTA copy is the client's, so it is set here from the source rather than
    paraphrased: label + the reassurance line welded under it. The price is
    interpolated, never typed. */
-const CTA_LABEL = `Start Your 6-Day Morning Reset · ${PRICE}`;
+const CTA_LABEL = `Start Your 5-Day Morning Reset · ${PRICE}`;
 const CTA_NOTE = "Full Refund If You Don't Love Day One";
 
-/* ⚠️ FLAG FOR ATUL: the source copy carries "#,###+" for Lives Impacted. It is
-   rendered exactly as written so a placeholder cannot ship invisibly. A real,
-   evidenceable figure has to replace it before launch; inventing one is not an
-   option. */
-const LIVES_IMPACTED = '#,###+';
+/* LIVES_IMPACTED now comes from ./offer with every other figure on the page.
+   It was declared here as a second copy of the same placeholder, so filling in
+   the real number in one place would have left the other still reading
+   "#,###+" with nothing to catch it. One declaration, one figure. */
 
 /* ══ 0 · Announcement strip (R10) ══════════════════════════════════════════
    A slim plum strip with one live coral dot and a slow shine, so it reads as
@@ -68,7 +68,7 @@ const LIVES_IMPACTED = '#,###+';
 export function AnnouncementBar() {
   const segments = [
     <>
-      <span className="font-bold">Special Offer:</span> 6-Day &lsquo;Start Your
+      <span className="font-bold">Special Offer:</span> 5-Day &lsquo;Start Your
       Morning Right&rsquo; Challenge for{' '}
       <span style={{ color: C.gold }}>{PRICE}</span>
     </>,
@@ -201,7 +201,7 @@ export function Hero() {
             >
               Discover The 60-Min Morning Formula For More Energy, Better Focus
               &amp; Showing Up At Your Best{' '}
-              <span style={{ color: C.gold }}>in just 6 days</span>
+              <span style={{ color: C.gold }}>in just 5 days</span>
             </h1>
 
             <p
@@ -317,10 +317,10 @@ export function Hero() {
                 className="mt-4 font-display font-bold text-[26px] leading-[1.16]"
                 style={{ color: C.ink }}
               >
-                6-Day &lsquo;Start Your Morning Right&rsquo; Challenge
+                5-Day &lsquo;Start Your Morning Right&rsquo; Challenge
               </h2>
               <p className="mt-2 text-[14px]" style={{ color: C.inkSoft }}>
-                Live on Zoom · {SESSION_TIMES} · 6 Expert-Guided Mornings
+                Live on Zoom · {SESSION_TIMES} · 5 Expert-Guided Mornings
               </p>
 
               {/* The value collapse, stated once: the price you pay lit, the

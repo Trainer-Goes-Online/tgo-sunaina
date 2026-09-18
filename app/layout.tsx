@@ -51,9 +51,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const TITLE = "6-Day 'Start Your Morning Right' Challenge | S.T.A.R.T. Right";
+const TITLE = "5-Day 'Start Your Morning Right' Challenge | S.T.A.R.T. Right";
 
-const DESCRIPTION = `Six live, expert-guided mornings combining stillness, movement, affirmations, breathwork and connection, with Sunaina Setia. Starts ${START_DATE}, ${SESSION_TIMES}, live on Zoom, for ${PRICE}.`;
+const DESCRIPTION = `Five live, expert-guided mornings combining stillness, movement, affirmations, breathwork and connection, with Sunaina Setia. Starts ${START_DATE}, ${SESSION_TIMES}, live on Zoom, for ${PRICE}.`;
 
 /* The live origin. Without a metadataBase Next resolves every share URL and
    every relative OG asset against localhost, so a link pasted into WhatsApp

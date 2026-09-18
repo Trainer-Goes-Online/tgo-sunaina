@@ -25,7 +25,7 @@ import {
 const VALUE = PRICE_RUPEES;
 const ITEM: Ga4Item = {
   item_id: 'sunaina-start-right-6day',
-  item_name: '6-Day Start Your Morning Right Challenge',
+  item_name: '5-Day Start Your Morning Right Challenge',
   price: VALUE,
   quantity: 1,
 };

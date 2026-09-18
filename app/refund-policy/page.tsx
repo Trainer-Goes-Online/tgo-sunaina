@@ -39,7 +39,7 @@ export default function RefundPolicyPage() {
         </li>
         <li>
           Use the subject line{' '}
-          <strong>&ldquo;Refund Request · 6-Day Challenge&rdquo;</strong>.
+          <strong>&ldquo;Refund Request · 5-Day Challenge&rdquo;</strong>.
         </li>
         <li>
           Include your full name and the date of purchase. A line on what did not
@@ -72,7 +72,7 @@ export default function RefundPolicyPage() {
       <ul>
         <li>Requests made after Day Two of your batch has begun.</li>
         <li>
-          Requests made after all six live sessions of your batch have been
+          Requests made after all five live sessions of your batch have been
           attended.
         </li>
         <li>Access given free, as part of a giveaway, or at a promotional rate of zero.</li>

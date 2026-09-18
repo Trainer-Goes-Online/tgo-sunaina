@@ -21,7 +21,7 @@ export const PRICE_PAISE = PRICE_RUPEES * 100;
 export const PRICE = `₹${PRICE_RUPEES.toLocaleString('en-IN')}`;
 /** The anchor the announcement bar names. Rising, per the source copy. */
 export const PRICE_RISES_TO = '₹1699';
-export const START_DATE = '14th September';
+export const START_DATE = '5th October 2026';
 export const SESSION_TIMES = '7 AM - 8 AM IST';
 /**
  * One batch only on this challenge, so the "with timezone" variant is the same
@@ -32,16 +32,16 @@ export const SESSION_TIMES = '7 AM - 8 AM IST';
 export const SESSION_TIMES_TZ = '7 AM - 8 AM IST';
 
 /**
- * ⚠️ PLACEHOLDER. DO NOT PUBLISH AS-IS.
- * The source copy carries "#,###+" against "Lives Impacted" in the hero proof
- * strip. A real, evidenceable figure has to replace this before the page goes
- * live; an invented number is not an option. The page renders whatever is here
- * verbatim, so a placeholder left in this constant ships visibly rather than
- * silently.
+ * The figure in the hero proof strip. Supplied by Atul 2026-09-18, replacing
+ * the source copy's "#,###+" placeholder, which was rendered verbatim until
+ * then so it could never ship invisibly.
+ *
+ * It is a claim about real people, so it is stated as a floor ("100+") rather
+ * than a precise count nobody can evidence.
  */
-export const WOMEN_SUPPORTED = '#,###+';
-/** The label this project actually uses for the same figure. Same placeholder,
- *  same blocker: fill one and both are filled. */
+export const WOMEN_SUPPORTED = '100+';
+/** The label this project actually uses for the same figure. One declaration,
+ *  so the two can never disagree. */
 export const LIVES_IMPACTED = WOMEN_SUPPORTED;
 
 /**
@@ -62,7 +62,7 @@ export const CHECKOUT_HREF = '/checkout';
  * The CTA label and its reassurance line, as written in the source copy.
  *
  * The source uses four button labels across the page (Reserve My Spot, Get
- * Instant Access, Start Your 6-Day Morning Reset, Take Action). The repeated
+ * Instant Access, Start Your 5-Day Morning Reset, Take Action). The repeated
  * one, under the hero and under the recap, is the primary. The other three are
  * exported so the sections that use them read from here rather than typing a
  * price into JSX.
@@ -70,7 +70,7 @@ export const CHECKOUT_HREF = '/checkout';
  * The reassurance line is a SINGLE line in the source, used under every button,
  * so CTA_NOTE and CTA_NOTE_HERO are deliberately the same string here.
  */
-export const CTA_LABEL = `Start Your 6-Day Morning Reset · ${PRICE}`;
+export const CTA_LABEL = `Start Your 5-Day Morning Reset · ${PRICE}`;
 export const CTA_LABEL_INSTANT = `Get Instant Access· ${PRICE}`;
 export const CTA_LABEL_ACTION = `Take Action · ${PRICE}`;
 export const CTA_LABEL_RESERVE = 'Reserve My Spot';

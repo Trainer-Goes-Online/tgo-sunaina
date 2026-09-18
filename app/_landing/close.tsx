@@ -47,7 +47,7 @@ import {
 } from './shared';
 
 /* The client's CTA copy, set from the source. The price is interpolated. */
-const CTA_LABEL = `Start Your 6-Day Morning Reset · ${PRICE}`;
+const CTA_LABEL = `Start Your 5-Day Morning Reset · ${PRICE}`;
 const CTA_NOTE = "Full Refund If You Don't Love Day One";
 
 const rupees = (n: number) => `₹${n.toLocaleString('en-IN')}`;
@@ -202,7 +202,7 @@ function Guide() {
           </figure>
 
           <p className="mt-7 text-[16px] leading-[1.75]" style={{ color: C.inkSoft }}>
-            That’s why she created this 6-Day Challenge, so you can experience
+            That’s why she created this 5-Day Challenge, so you can experience
             the complete morning formula for yourself and see what begins to
             change when you Start Right.
           </p>
@@ -455,7 +455,7 @@ function TwoOptions() {
             OPTION 2
           </span>
           <p className="mt-5 text-[15px] leading-relaxed" style={{ color: C.onDark }}>
-            Give yourself 60 intentional minutes for just 6 mornings, experience
+            Give yourself 60 intentional minutes for just 5 mornings, experience
             the complete S.T.A.R.T. Right Method live, and see what changes when
             you begin the day taking care of your mind, body &amp; inner self
             first.
@@ -502,7 +502,7 @@ function TwoOptions() {
  * off.
  */
 const RECAP = [
-  { what: '6-Day Live ‘Start Your Morning Right’ Challenge', value: 2500 },
+  { what: '5-Day Live ‘Start Your Morning Right’ Challenge', value: 2500 },
   { what: 'The ‘Say It To Yourself’ Affirmation Guide', value: 497 },
   { what: 'The S.T.A.R.T. Right Scorecard', value: 497 },
   { what: 'The Wind Down Breathwork Track', value: 497 },

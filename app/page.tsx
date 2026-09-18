@@ -1,5 +1,5 @@
 /**
- * / · S.T.A.R.T. Right 6-Day 'Start Your Morning Right' Challenge landing page.
+ * / · S.T.A.R.T. Right 5-Day 'Start Your Morning Right' Challenge landing page.
  *
  * Server Component shell. The above-the-fold hero is pure static HTML with zero
  * JavaScript on the critical path, so it paints immediately; everything below

@@ -27,7 +27,7 @@ export default function TermsPage() {
 
       <h2>2. What you are buying</h2>
       <p>
-        Access to the {LEGAL.product}: six live coach-led sessions of 60 minutes
+        Access to the {LEGAL.product}: five live coach-led sessions of 60 minutes
         each, delivered on Zoom, starting {START_DATE} at {SESSION_TIMES_TZ},
         together with the community access and the digital resources listed at
         checkout. The fee is {PRICE}.

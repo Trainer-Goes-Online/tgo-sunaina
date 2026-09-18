@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * /checkout, the 6-Day 'Start Your Morning Right' Challenge.
+ * /checkout, the 5-Day 'Start Your Morning Right' Challenge.
  *
  * Built to the same pattern as the ankita-postpartum checkout, which is the
  * house standard for challenge funnels: header with a way back, a centred
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
            silently 404s into a blank tile. JPG rather than WebP: the sheet is
            third-party surface and a plain raster is the safe format there. */
         image: `${window.location.origin}${asset('/brand/start-right-square.jpg')}`,
-        description: '6-Day Start Your Morning Right Challenge',
+        description: '5-Day Start Your Morning Right Challenge',
         prefill: {
           name: `${f.firstName.trim()} ${f.lastName.trim()}`.trim(),
           email: f.email.trim(),
@@ -566,7 +566,7 @@ function OrderSummary() {
             className="mt-2 block font-display font-bold text-[20px] leading-snug sm:text-[22px]"
             style={{ color: C.ink }}
           >
-            The 6-Day Challenge, in full
+            The 5-Day Challenge, in full
           </span>
           <span className="mt-1 block text-[12px] lg:hidden" style={{ color: C.inkSoft }}>
             {open ? 'Tap to hide details' : 'Tap to view what is included'}

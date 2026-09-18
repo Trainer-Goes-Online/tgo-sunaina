@@ -59,7 +59,7 @@ const rupees = (n: number) => `₹${n.toLocaleString('en-IN')}`;
 const LEAD = {
   n: '01',
   icon: Broadcast,
-  title: '6-Day Live ‘Start Your Morning Right’ Challenge',
+  title: '5-Day Live ‘Start Your Morning Right’ Challenge',
   value: 2500,
   body: 'Experience six expert-guided mornings combining stillness, movement, affirmations, breathwork & connection in one deliberately sequenced practice for your mind, body & inner self.',
   tag: 'LIVE ACCESS · INCLUDED',
@@ -188,7 +188,7 @@ export default function Toolkit() {
           className="font-display font-bold text-[clamp(28px,4.4vw,46px)] leading-[1.14]"
           style={{ color: C.ink, textWrap: 'balance' } as React.CSSProperties}
         >
-          Your 6-Day S.T.A.R.T. Right Experience &amp;{' '}
+          Your 5-Day S.T.A.R.T. Right Experience &amp;{' '}
           <span style={{ color: C.goldDeep }}>Complete Morning Essentials Toolkit</span>
         </h2>
       </div>
